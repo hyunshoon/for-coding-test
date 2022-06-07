@@ -9,29 +9,40 @@ def bfs(x, y):
             cx = dx[i] + x
             cy = dy[i] + y
 
-            if cx<0 or cy<0 or cx>row-1 or cy> col-1:
+            if cx<0 or cy<0 or cx>col-1 or cy> row-1:
                 continue
-            if graph[cx][cy] == 1:
-                graph[cx][cy] = 0
+            if graph[cx][cy] == 0:#아직 익지 않은 것
+                graph[cx][cy] = graph[x][y] + 1
                 queue.append((cx, cy))
-    return 1
+                cnt+=1
+    return cnt
 #상, 하, 좌, 우
+
 dx = [0, 0, -1, 1]
 dy = [-1, 1, 0, 0]
+
 T = int(input())
 
-cnt_li = []
+
 for _ in range(T):
     col, row, K = list(map(int, input().split(' ')))
-    graph = [[0 for c in range(col)] for r in range(row)]
+    col -= 1
+    row -= 1
+    graph = []
     for _ in range(K):#그래프 초기화
         x, y = list(map(int, input().split(' ')))
-        graph[y][x] = 1
-    cnt = 0
+        graph[x][y] = 1
+    
     for r in range(row):
         for c in range(col):
-            if graph[r][c] == 1:
-                cnt += bfs(r, c)
-    cnt_li.append(cnt)
+            if graph[row][col] == 1:
+                bfs(row, col)
     
+    
+
+
+cnt_li = []
+
+cnt_li = sorted(cnt_li)
+print(len(cnt_li))
 [print(c) for c in cnt_li]
