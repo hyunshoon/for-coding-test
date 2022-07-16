@@ -2,7 +2,8 @@
 #point2: 강의가 끝나는 시간을 강의실 리스트로 생성. 현재 강의실을 배정하는 강의를 넣을 수 있다면 원소를 대체해서 넣고, 그렇지 못하다면 새롭게 원소 추가. 원소의 개수는 강의실 개수가 됌.
 
 #lec_li를 start_time기준으로 sort하면 맞고 end_time기준으로 sort하면 틀린다.
-#이유 생각
+#이유
+#
 import heapq
 N = int(input())
 lec_li = []
@@ -15,7 +16,6 @@ lec_li = sorted(lec_li, key = lambda x: x[0])
 #lec_li[i][1]: end time
 room_heap = [lec_li[0][1]]
 for lec in lec_li[1:]:
-    # print(lec, room_heap)
     start_time = lec[0]
     end_time = lec[1]
     
@@ -28,3 +28,4 @@ for lec in lec_li[1:]:
         
 print(len(room_heap))
 
+#l
