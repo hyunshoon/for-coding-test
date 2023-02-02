@@ -28,6 +28,7 @@
 - 슬라이딩 윈도우
 - 최단 경로
 - 문자열
+- 이진 탐색
 
 ### 바이너리 서치
 
@@ -39,4 +40,10 @@
 리스트인 경우 O(N)을 가진다.
 이를 줄이기 위해 set() 자료구조를 사용하면 O(1)만에 찾을 수 있다. set은 해시테이블을 사용하기 때문이다.
 
+### defaultdict 자료형
 
+from collections import defaultdict
+my_dict = defaultdict(list)  <- list 자료형으로 딕셔너리를 초기화
+
+defaultdict를 사용하면 키 값을 초기화하지 않았을 때 디폴트 자료형으로 초기화 하는 것.
+위와 같이 사용하면 my_dict['ex']를 초기화 하지 않았을 때 디폴트로 빈 리스트를 가진다.
