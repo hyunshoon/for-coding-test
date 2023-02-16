@@ -1,5 +1,9 @@
 # for-coding-test
 
+## 시간과 메모리는 트레이드 오프 관계이다
+
+시간초과가 발생하는 경우, 메모리를 사용(DP, Stack, Queue, Dictionary 등 자료구조를 먼저 떠올리자)하여 타계할 생각을 가지자! 
+
 ## 참고 강의
 - https://youtube.com/playlist?list=PLRx0vPvlEmdAghTr5mXQxGpHjWqSz0dgC : 이코테2021(동빈나)
 
