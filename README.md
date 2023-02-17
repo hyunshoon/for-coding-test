@@ -1,14 +1,7 @@
 # for-coding-test
 
-## 시간과 메모리는 트레이드 오프 관계이다
 
-시간초과가 발생하는 경우, 메모리를 사용(DP, Stack, Queue, Dictionary 등 자료구조를 먼저 떠올리자)하여 타계할 생각을 가지자! 
 
-## 참고 강의
-- https://youtube.com/playlist?list=PLRx0vPvlEmdAghTr5mXQxGpHjWqSz0dgC : 이코테2021(동빈나)
-
-## 참고 서적
-- 파이썬 알고리즘 인터뷰: 95가지 알고리즘 문제 풀이로 완성하는 코딩 테스트
 
 ## 코딩 테스트 플랫폼
 - 백준, 프로그래머스, 리트코드
@@ -32,7 +25,9 @@ Point, Caution, Solution 으로 분리하여 문제를 체계적으로 푸는게
 - 입력값이 0, null 인 경우
 - 경계 값 항상 체크
 
-3. 문제 당 제한 시간을 정해두자. 
+3. 시간과 메모리는 트레이드 오프 관계이다
+
+시간초과가 발생하는 경우, 메모리를 사용(DP, Stack, Queue, Dictionary 등 자료구조를 먼저 떠올리자)하여 타계할 생각을 가지자! 
 
 ## 다루는 알고리즘
 - 구현
@@ -49,6 +44,13 @@ Point, Caution, Solution 으로 분리하여 문제를 체계적으로 푸는게
 ### 바이너리 서치
 
 정렬된 배열에서 타겟을 서치하는 O(logN)시간 복잡도를 가지는 검색 알고리즘.
+
+#### 파라메트릭 서치: 최적화 문제를 결정 문제로 바꾸어 해결하는 기법
+
+예시) 특정한 조건을 만족하는 가장 알맞은 값을 빠르게 찾는 최적화 문제
+
+대표문제
+- Softeer: 코딩테스트 세트
 
 ### set 자료형
 
@@ -139,6 +141,45 @@ def heqp(arr):
     heqpq.heappop(heqp_list) # 힙에서 원소 pop
 ```
 
+### Tree
+
+계층적인 구조를 표현할 때 사용
+
+기본적으로 트리의 노드가 N 일 때 간선의 개수는 N-1개이다.
+
+#### 이진 탐색 트리
+
+이진탐색이 동작할 수 있도록 고안된 자료구조
+
+특징: 모든 왼쪽 자식노드 < 부모 노드 < 모든 오른쪽 자식 노드
+
+![image](https://user-images.githubusercontent.com/28949162/219547389-dbe2b1a4-473a-45fc-a7ca-2bfc6db35647.png)
+
+#### 트리의 순회
+
+- 전위 순회: 루트를 먼저 방문
+- 중위 순회: 왼쪽 자식을 방문한 뒤에 루트를 방문
+- 후위 순회: 오른쪽 자식을 방문한 뒤에 루트를 방문
+
+![image](https://user-images.githubusercontent.com/28949162/219547857-d566b830-43b0-4d41-a326-7778f69d1cda.png)
+
+```python
+Class Node:
+  def __init__(self, root, left_node, right_node):
+    self.root = root
+    self.left_node = left_node
+    self.right_node = rigth_node
+```
+
+
 ## 다시볼만한 풀이
 
 - Programmars: 아이템 줍기
+
+
+
+## 참고 강의
+- https://youtube.com/playlist?list=PLRx0vPvlEmdAghTr5mXQxGpHjWqSz0dgC : 이코테2021(동빈나)
+
+## 참고 서적
+- 파이썬 알고리즘 인터뷰: 95가지 알고리즘 문제 풀이로 완성하는 코딩 테스트
