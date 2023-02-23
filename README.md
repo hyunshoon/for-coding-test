@@ -1,8 +1,6 @@
 # for-coding-test
 
 
-
-
 ## 코딩 테스트 플랫폼
 - 백준, 프로그래머스, 리트코드
 - Softeer: 현대그룹 코딩테스트. input을 직접 해야 하고 여기서 시간 단축을 위해 input()이 아닌 sys.stdin.readline()으로 입력 받아야 한다.
@@ -37,11 +35,11 @@ Point, Caution, Solution 으로 분리하여 문제를 체계적으로 푸는게
 - 그리디
 - DP
 - 슬라이딩 윈도우
-- 최단 경로
+- 최단 경로(다익스트라)
 - 문자열
 - 이진 탐색
 
-### 바이너리 서치
+### Binary Search
 
 정렬된 배열에서 타겟을 서치하는 O(logN)시간 복잡도를 가지는 검색 알고리즘.
 
@@ -51,6 +49,7 @@ Point, Caution, Solution 으로 분리하여 문제를 체계적으로 푸는게
 
 대표문제
 - Softeer: 코딩테스트 세트
+- BOJ: 
 
 ### set 자료형
 
@@ -171,11 +170,86 @@ Class Node:
     self.right_node = rigth_node
 ```
 
+### 최단 경로 알고리즘
+
+가장 짧은 경로를 찾는 알고리즘
+
+다양한 문제 상황
+- 한 지점에서 다른 한 지점까지의 최단 경로
+- 한 지점에서 다른 모든 지점까지의 최단 경로
+- 모든 지점에서 다른 모든 지점까지의 최단 경로
+
+### 다익스트라 최단 경로 알고리즘
+
+**특정한 노드**에서 출발하여 다른 **모든 노드**로 가는 최단 경로를 계산
+
+다익스트라 최단 경로 알고리즘은 음의 간선이 없을 때 정상 동작
+
+그리디 알고리즘으로 분류. 매 상황에서 가장 비용이 적은 노드를 선택해 임의의 과정을 반복한다.
+
+#### 다익스트라 알고리즘 특징
+
+- 그리디 알고리즘: 매 상황에서 방문하지 않은 가장 비용이 적은 노드를 선택해 임의의 과정을 반복.
+- 단계를 거치며 한 번 처리된 노드의 최단 거리는 고정되어 더 이상 바뀌지 않는다.
+  - 한 단계당 하나의 노드에 대한 최단 거리를 확실히 찾는 것
+- 다익스트라 알고리즘을 수행한 뒤에 테이블에 각 노드까지의 최단 거리 정보가 저장된다.
+  - 완벽한 형태의 최단 경로를 구하려면 소스코드에 추가적인 기능을 더 넣어야한다.
+
+#### 동작 과정
+
+1. 출발 노드 설정
+2. 최단 거리 테이블 초기화
+3. 방문하지 않은 노드 중에서 최단 거리가 가장 짧은 노드 선택 (우선순위 큐를 사용하여 시간복잡도를 O(V^2) -> O(ElogV)로 낮춘다)
+4. 해당 노드를 거쳐 다른 노드로 가는 비용을 계산하여 최단 거리 테이블을 갱신(그리디)
+5. 3, 4번 반복
+
+알고리즘 동작 과정에서 최단 거리 테이블은 각 노드에 대한 현재까지의 최단 거리 정보를 가지고 있다.
+
+![image](https://user-images.githubusercontent.com/28949162/220826076-7bd0859c-433e-4826-8a24-993554f5e0d3.png)
+
+![image](https://user-images.githubusercontent.com/28949162/220826100-4f0038b0-62b3-4bf4-9aee-ff1302d01b7d.png)
+
+![image](https://user-images.githubusercontent.com/28949162/220826326-325b91db-1c0f-4733-90d8-f16056d6d8cd.png)
+
+![image](https://user-images.githubusercontent.com/28949162/220826934-3a034575-4dc3-4dbf-bcdc-6f74a18a6899.png)
+
+![image](https://user-images.githubusercontent.com/28949162/220826966-3285a8d4-a02a-4068-90c7-0b7fc60606b2.png)
+
+![image](https://user-images.githubusercontent.com/28949162/220826994-a77a0667-a148-4024-b73f-6c0c79768aac.png)
+
+![image](https://user-images.githubusercontent.com/28949162/220827056-5f0dc3e4-cbea-4983-ab28-09b39f025a58.png)
+
+![image](https://user-images.githubusercontent.com/28949162/220827088-87284e78-cb7a-4a33-b8a6-1433b7d7b4e3.png)
+
+
+#### 구현 예시
+
+```python
+INF = int(1e9) # angks dPtl
+distance = [INF] * (n+1) # 거리테이블
+
+def dijkstra(start):
+  q = []
+  heapq.heappush(q, (0, start))
+  distance[start] = 0
+  while q:#큐가 비어있지 않으면
+    dist, now = heapq.heappop(q)
+    if distance[now] < dist:continue # 이미 처리된 노드라는 뜻
+    
+    #현재 노드와 연결된 다른 인접 노드 확인
+    for i in graph[now]:
+      cost = dist + i[1]
+      #현재 노드를 거쳐서, 다른 노드로 이동하는 거리가 더 짧은 경우
+      if cost < distance[i[0]]:
+        distance[i[0]] = cost
+        heapq.heappush(q, (cost, i[0]))
+
+dijkstra(start)
+```
 
 ## 다시볼만한 풀이
 
 - Programmars: 아이템 줍기
-
 
 
 ## 참고 강의
