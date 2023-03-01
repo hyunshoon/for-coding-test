@@ -249,8 +249,12 @@ dijkstra(start)
 
 ## 다시볼만한 풀이
 
-- Programmars: 아이템 줍기
+#### Programmars: 
 
+아이템 줍기
+
+#### BOJ
+내리막길: DP + DFS 조합해야 시간초과 
 
 ## 참고 강의
 - https://youtube.com/playlist?list=PLRx0vPvlEmdAghTr5mXQxGpHjWqSz0dgC : 이코테2021(동빈나)
